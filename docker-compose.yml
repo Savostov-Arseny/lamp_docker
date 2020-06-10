@@ -8,6 +8,8 @@ services:
       - 8080:80
     volumes:
       - ./html:/var/www/html
+      - ./apache-php/config/php.ini:/usr/local/etc/php/php.ini
+      - ./apache-php/config/apache2.conf:/etc/apache2/apache2.conf
     depends_on:
       mysql:
         condition: service_healthy
