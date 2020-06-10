@@ -1,0 +1,3 @@
+FROM php:7.4.2-apache
+COPY php-extensions /tmp
+RUN docker-php-ext-install $(cat /tmp/php-extensions) 
