@@ -2,11 +2,12 @@ version: '2.1'
 
 services:
   php:
-    image: php:7.2-apache
+    build:
+      context: apache-php
     ports:
       - 8080:80
     volumes:
-      - ./data:/var/www/html
+      - ./html:/var/www/html
     depends_on:
       mysql:
         condition: service_healthy
