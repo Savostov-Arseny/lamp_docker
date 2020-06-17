@@ -1,10 +1,10 @@
 # lamp_docker
-Simple docker-compose stand, that will to run apache2 with php, MySQL, phpMyAdmin.
+Simple docker-compose stand, that will run apache2 with php, MySQL, phpMyAdmin.
 
 ## How to run the project
 - Install docker & docker-compose
 - Clone this repository
-- Put php project in `html/` folder
+- Put php project in [html/](html/) folder
 - Put values in the `mysql.env` file to specify the user, password etc.
 - Run `$ docker-compose up -d` command
 
@@ -17,7 +17,7 @@ You can reffer to [docker-php-extension-installer](https://github.com/mlocati/do
 
 ## Provide configuration files
 You can provide custom [php.ini](apache-php/config/php.ini) and [apache2.conf](apache-php/config/apache2.conf) files. 
-You need to put the files in `apache-php/config/` and uncomment the lines below, in [docker-compose.yml](docker-compose.yml)
+You need to put the files in [apache-php/config/](apache-php/config/) and uncomment the lines below, in [docker-compose.yml](docker-compose.yml)
 ```
     volumes:
       - ./html:/var/www/html
@@ -25,12 +25,12 @@ You need to put the files in `apache-php/config/` and uncomment the lines below,
 #      - ./apache-php/config/apache2.conf:/etc/apache2/apache2.conf
 ```
 ## Using .htpasswd & .htaccess
-Put the actual [.htpasswd](apache-php/config/.htpasswd) file in `apache-php/config/`.
+Put the actual [.htpasswd](apache-php/config/.htpasswd) file in [apache-php/config/](apache-php/config/).
 Uncomment the line below, in [docker-compose.yml](docker-compose.yml)
 ```
 #      - ./apache-php/config/.htpasswd:/etc/.htpasswd
 ```
-Put the .htacces files in `html/` folder. 
+Put the .htacces files in [html/](html/) folder. 
 
 ## Backup & restore MySQL
 To backup MySQL: 
