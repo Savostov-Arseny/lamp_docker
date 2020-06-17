@@ -1,5 +1,5 @@
 # lamp_docker
-Simple docker-compose stand, that will to run apache2 with php, mysql, phpmyadmin.
+Simple docker-compose stand, that will to run apache2 with php, MySQL, phpMyAdmin.
 
 ## How to run the project
 - Install docker & docker-compose
@@ -8,7 +8,7 @@ Simple docker-compose stand, that will to run apache2 with php, mysql, phpmyadmi
 - Put values in the `mysql.env` file to specify the user, password etc.
 - Run `$ docker-compose up -d` command
 
- Apache2 runs on 8080 port, phpmyadmin on 8765 port, and mysql on 3306 port.
+ Apache2 runs on 8080 port, phpMyAdmin on 8765 port, and MySQL on 3306 port.
 
 ## How to install php-extensions
 Php extensions installation based on `$ docker-php-ext-install`.
@@ -31,3 +31,13 @@ Uncomment the line below, in [docker-compose.yml](docker-compose.yml)
 #      - ./apache-php/config/.htpasswd:/etc/.htpasswd
 ```
 Put the .htacces files in `html/` folder. 
+
+## Backup & restore MySQL
+To backup MySQL: 
+```
+$ docker exec CONTAINER_NAME /usr/bin/mysqldump -u ROOT --password=ROOT_PASSWORD DATABASE > backup.sql
+```
+To restore MySQL:
+```
+$ cat backup.sql | docker exec -i CONTAINER_NAME /usr/bin/mysql -u ROOT --password=ROOT_PASSWORD DATABASE
+```
