@@ -20,12 +20,8 @@ services:
     container_name: mysql
     ports:
       - "3306:3306"
-    environment:
-      - MYSQL_ROOT_PASSWORD=
-      - MYSQL_ALLOW_EMPTY_PASSWORD=true
-      - MYSQL_USER=user
-      - MYSQL_PASSWORD=pass
-      - MYSQL_DATABASE=mydb
+    env_file:
+      - mysql.env
     volumes:
       - "./mysql:/var/lib/mysql"
     healthcheck:
@@ -39,10 +35,8 @@ services:
       - mysql:db
     ports:
       - 8765:80
-    environment:
-      MYSQL_ROOT_PASSWORD:
-      MYSQL_USER: user
-      MYSQL_PASSWORD: pass
+    env_file:
+      - mysql.env
     depends_on:
       mysql:
         condition: service_healthy
